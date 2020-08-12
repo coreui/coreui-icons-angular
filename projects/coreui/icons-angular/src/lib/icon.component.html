@@ -1,0 +1,26 @@
+<img *ngIf="src"
+     [cHtmlAttr]="attributes"
+     [src]="src"
+/>
+<svg  *ngIf="(!src) && (!use)"
+      xmlns="http://www.w3.org/2000/svg"
+      [attr.width]="width"
+      [attr.height]="height || width"
+      [attr.viewBox]="viewBox"
+      [attr.title]="titleCode"
+      [innerHtml]="iconCode"
+      [attr.class]="computedClasses"
+      role="img"
+      pointer-events="none"
+>
+</svg>
+<svg *ngIf="use"
+     xmlns="http://www.w3.org/2000/svg"
+     [attr.width]="width"
+     [attr.height]="height || width"
+     [attr.class]="computedClasses"
+     role="img"
+     pointer-events="none"
+>
+  <use [attr.href]="use"></use>
+</svg>
