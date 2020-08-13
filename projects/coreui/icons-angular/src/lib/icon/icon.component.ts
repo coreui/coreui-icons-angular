@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
-import {IconService} from './icon.service';
+import {IconSetService} from '../icon-set';
 import classNames from 'classnames';
 
 @Component({
@@ -82,7 +82,7 @@ export class IconComponent {
 
   constructor(
     private sanitizer: DomSanitizer,
-    private iconSet: IconService
+    private iconSet: IconSetService
   ) { }
 
   toCamelCase(str) {

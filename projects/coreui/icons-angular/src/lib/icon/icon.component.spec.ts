@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HtmlAttributesDirective } from './html-attr.directive';
+import { HtmlAttributesDirective } from '../shared/html-attr.directive';
 
 import { IconComponent } from './icon.component';
 

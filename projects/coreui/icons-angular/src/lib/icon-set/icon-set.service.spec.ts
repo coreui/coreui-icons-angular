@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { IconService } from './icon.service';
+import { IconSetService } from './icon-set.service';
 
 describe('IconService', () => {
-  let service: IconService;
+  let service: IconSetService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(IconService);
+    service = TestBed.inject(IconSetService);
   });
 
   it('should be created', () => {

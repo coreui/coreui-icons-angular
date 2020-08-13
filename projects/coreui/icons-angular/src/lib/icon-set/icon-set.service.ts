@@ -7,7 +7,7 @@ export interface IIconSet {
 @Injectable({
   providedIn: 'root'
 })
-export class IconService {
+export class IconSetService {
 
   // tslint:disable-next-line:variable-name
   private _icons: IIconSet = {};

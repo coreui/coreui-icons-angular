@@ -1,7 +1,7 @@
 /*
- * Public API Surface of icons-angular
+ * Public API Surface of @coreui/icons-angular
  */
-
-export * from './lib/icon.service';
-export * from './lib/icon.component';
-export * from './lib/icon.module';
+export { IconComponent } from './lib/icon/icon.component';
+export { IconModule } from './lib/icon/icon.module';
+export { IconSetService, IIconSet } from './lib/icon-set/icon-set.service';
+export { IconSetModule } from './lib/icon-set/icon-set.module';
