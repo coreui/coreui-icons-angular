@@ -1,8 +1,8 @@
 # CoreUI Icons Angular
 
-[![NPM](https://img.shields.io/npm/v/@coreui/icons-angular/latest?style=flat-square&color=brightgreen)][coreui]
-[![Downloads](https://img.shields.io/npm/dm/@coreui/icons-angular.svg?style=flat-square)][coreui]
-[![License](https://img.shields.io/npm/l/@coreui/icons-angular?style=flat-square)][coreui]
+[![NPM](https://img.shields.io/npm/v/@coreui/icons-angular/latest?style=flat-square&color=brightgreen)][coreui-angular-icons-npm]
+[![Downloads](https://img.shields.io/npm/dm/@coreui/icons-angular.svg?style=flat-square)][coreui-angular-icons-npm]
+[![License](https://img.shields.io/npm/l/@coreui/angular?style=flat-square)][coreui]
 
 [coreui]: https://coreui.io/icons
 [coreui-angular-icons-npm]: https://coreui.io/icons
