@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/npm/l/@coreui/angular?style=flat-square)][coreui]
 
 [coreui]: https://coreui.io/icons
-[coreui-angular-icons-npm]: https://coreui.io/icons
+[coreui-angular-icons-npm]: https://www.npmjs.com/package/@coreui/icons-angular
 
 ## `c-icon` component
 
