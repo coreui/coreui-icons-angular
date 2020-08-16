@@ -25,8 +25,6 @@ For component description visit [CIcon component documentation](https://icons.co
 
 ### Installation
 
-If you already have installed [CoreUI Angular component library](https://coreui.io/angular/docs) plugin, then you have CIcon component already installed, otherwise install package by:
-
 ```shell
 npm install @coreui/icons
 npm install @coreui/icons-angular
