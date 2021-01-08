@@ -24,11 +24,12 @@
     "url": "https://github.com/coreui/coreui-icons-angular/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^9.1.12",
-    "@angular/core": "^9.1.12"
+    "@angular/common": ">= 9.1.x",
+    "@angular/core": ">= 9.1.x"
   },
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "^1.14.1",
+    "classnames": "^2.2.6"
   },
   "keywords": [
     "coreui",
