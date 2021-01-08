@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
-import {IconSetService} from '../icon-set';
+import {IconSetService} from '../icon-set/icon-set.service';
 import classNames from 'classnames';
 
 @Component({
