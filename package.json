@@ -1,6 +1,6 @@
 {
   "name": "coreui-icons-angular",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "CoreUI Icons Angular component",
   "license": "MIT",
   "homepage": "https://coreui.io",
@@ -27,7 +27,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test --watch=false",
     "lint": "ng lint",
     "link-lib": "cd dist/coreui-icons-angular/ && npm link",
     "publish-lib": "cd dist/coreui-icons-angular/ && npm publish --tag next --dry-run",
