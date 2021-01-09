@@ -28,7 +28,7 @@ jobs:
         run: |
           npm i
           npm run build
-          npm run test
+          npm run test:github
           npm run lint
         env:
           CI: true
