@@ -13,7 +13,7 @@ export class HtmlAttributesDirective implements OnInit {
     private el: ElementRef
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const attribs = this.cHtmlAttr;
     for (const attr in attribs) {
       if (attr === 'style' && typeof(attribs[attr]) === 'object' ) {
@@ -26,21 +26,21 @@ export class HtmlAttributesDirective implements OnInit {
     }
   }
 
-  private setStyle(styles) {
+  private setStyle(styles): void {
     // tslint:disable-next-line:forin
     for (const style in styles) {
       this.renderer.setStyle(this.el.nativeElement, style, styles[style] );
     }
   }
 
-  private addClass(classes) {
+  private addClass(classes): void {
     const classArray = (Array.isArray(classes) ? classes : classes.split(' '));
     classArray.filter((element) => element.length > 0).forEach(element => {
       this.renderer.addClass(this.el.nativeElement, element );
     });
   }
 
-  private setAttrib(key, value) {
+  private setAttrib(key, value): void {
     value !== null ?
       this.renderer.setAttribute(this.el.nativeElement, key, value ) :
       this.renderer.removeAttribute(this.el.nativeElement, key);

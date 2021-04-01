@@ -3,6 +3,7 @@
 [![NPM](https://img.shields.io/npm/v/@coreui/icons-angular/latest?style=flat-square&color=brightgreen)][coreui-angular-icons-npm]
 [![Downloads](https://img.shields.io/npm/dm/@coreui/icons-angular.svg?style=flat-square)][coreui-angular-icons-npm]
 [![License](https://img.shields.io/npm/l/@coreui/angular?style=flat-square)][coreui]
+![angular](https://img.shields.io/badge/angular-^11.0.0-lightgrey.svg?style=flat-square&logo=angular)
 
 [coreui]: https://coreui.io/icons
 [coreui-angular-icons-npm]: https://www.npmjs.com/package/@coreui/icons-angular
@@ -81,7 +82,7 @@ proprerty | type | default | description
 `size` | `custom`, `custom-size`, `sm`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, `6xl`, `7xl`, `8xl`, `9xl` |  '' | Size of icon
 `title` | string | undefined |
 `use` | string | undefined | SVG `<use>` 
-`customClasses` | string | undefined | Replaces default `c-icon` component classes
+`customClasses` | string | undefined | Overwrites default `c-icon` component classes
 `viewBox` | string | undefined | SVG `viewbox`
 `attributes` | any | `{ role: 'img' }` |  Object with additional html attributes
 `width` | | undefined | SVG `width`

@@ -1,16 +1,24 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "@coreui/icons-angular": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/coreui/icons-angular",
       "sourceRoot": "projects/coreui/icons-angular/src",
       "prefix": "c",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/coreui/icons-angular/tsconfig.lib.json",
             "project": "projects/coreui/icons-angular/ng-package.json"
@@ -42,9 +50,7 @@
           }
         }
       }
-    }},
-  "cli": {
-    "analytics": false
+    }
   },
   "defaultProject": "@coreui/icons-angular"
 }

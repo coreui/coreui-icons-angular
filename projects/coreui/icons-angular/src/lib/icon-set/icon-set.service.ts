@@ -17,11 +17,11 @@ export class IconSetService {
   set icons(iconSet) {
     this._icons = iconSet;
   }
-  get icons() {
+  get icons(): IIconSet {
     return this._icons;
   }
 
-  public getIcon(name) {
+  public getIcon(name): string[] {
     const icon = this.icons[name];
     if (!icon) {
       console.warn(`CoreUI WARN: Icon ${name} is not registered in IconService`);
