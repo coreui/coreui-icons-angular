@@ -82,8 +82,8 @@ export class IconComponent {
 
   get computedClasses(): any {
     const classes = {
-      'c-icon': true,
-      [`c-icon-${this.computedSize}`]: !!this.computedSize
+      icon: true,
+      [`icon-${this.computedSize}`]: !!this.computedSize
     };
     return !!this.customClasses ? this.customClasses : classes;
   }

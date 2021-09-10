@@ -1,86 +1,49 @@
 :host use, :host svg { }
 
-.c-icon {
+// Icon variables
+$icon-size-base:  1rem !default;
+$icon-size-sm:    $icon-size-base * .875 !default;
+$icon-size-lg:    $icon-size-base * 1.25 !default;
+$icon-size-xl:    $icon-size-base * 1.5 !default;
+$icon-size-xxl:   $icon-size-base * 2 !default;
+
+// Icon sizes
+@mixin icon-size($icon-size) {
+  width: $icon-size;
+  height: $icon-size;
+  font-size: $icon-size;
+}
+
+// Icons
+.icon {
   display: inline-block;
   color: inherit;
   text-align: center;
+  vertical-align: -.125rem; // Fix the position of icon
   fill: currentColor;
-}
+  &:not(.icon-c-s):not(.icon-custom-size) {
+    @include icon-size($icon-size-base);
 
-.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size) {
-  width: 1rem;
-  height: 1rem;
-  font-size: 1rem;
-}
+    &.icon-xxl {
+      @include icon-size($icon-size-xxl);
+    }
 
-.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-2xl {
-  width: 2rem;
-  height: 2rem;
-  font-size: 2rem;
-}
+    &.icon-xl {
+      @include icon-size($icon-size-xl);
+    }
 
-.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-3xl {
-  width: 3rem;
-  height: 3rem;
-  font-size: 3rem;
-}
+    &.icon-lg {
+      @include icon-size($icon-size-lg);
+    }
 
-.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-4xl {
-  width: 4rem;
-  height: 4rem;
-  font-size: 4rem;
-}
+    &.icon-sm {
+      @include icon-size($icon-size-sm);
+    }
 
-.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-5xl {
-  width: 5rem;
-  height: 5rem;
-  font-size: 5rem;
-}
-
-.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-6xl {
-  width: 6rem;
-  height: 6rem;
-  font-size: 6rem;
-}
-
-.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-7xl {
-  width: 7rem;
-  height: 7rem;
-  font-size: 7rem;
-}
-
-.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-8xl {
-  width: 8rem;
-  height: 8rem;
-  font-size: 8rem;
-}
-
-.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-9xl {
-  width: 9rem;
-  height: 9rem;
-  font-size: 9rem;
-}
-
-.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-xl {
-  width: 1.5rem;
-  height: 1.5rem;
-  font-size: 1.5rem;
-}
-
-.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-lg {
-  width: 1.25rem;
-  height: 1.25rem;
-  font-size: 1.25rem;
-}
-
-.c-icon:not(.c-icon-c-s):not(.c-icon-custom-size).c-icon-sm {
-  width: 0.875rem;
-  height: 0.875rem;
-  font-size: 0.875rem;
-}
-
-.c-icon-c-s,
-.c-icon-custom-size {
-  width: initial !important;
-  height: initial !important;
+    @for $i from 3 through 9 {
+      &.icon-#{$i}xl {
+        @include icon-size($i * $icon-size-base);
+      }
+    }
+  }
 }

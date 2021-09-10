@@ -85,7 +85,7 @@ proprerty | type | default | description
 `size` | `custom`, `custom-size`, `sm`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, `6xl`, `7xl`, `8xl`, `9xl` |  '' | Size of icon
 `title` | string | undefined |
 `use` | string | undefined | SVG `<use>` 
-`customClasses` | string | undefined | Overwrites default `c-icon` component classes
+`customClasses` | string | undefined | Overwrites default `.icon` classes
 `viewBox` | string | undefined | SVG `viewbox`
 `attributes` | any | `{ role: 'img' }` |  Object with additional html attributes
 `width` | string | undefined | SVG `width`
