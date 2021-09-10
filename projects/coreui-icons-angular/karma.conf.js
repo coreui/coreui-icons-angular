@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../../../coverage/coreui-icons-angular'),
+      dir: require('path').join(__dirname, '../../coverage/coreui-icons-angular'),
       subdir: '.',
       reporters: [
         { type: 'html' },
@@ -36,9 +36,9 @@ module.exports = function (config) {
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: false,
-    singleRun: true,
-    restartOnFileChange: false,
-    browsers: ['ChromeHeadless'],
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false,
+    restartOnFileChange: true
   });
 };

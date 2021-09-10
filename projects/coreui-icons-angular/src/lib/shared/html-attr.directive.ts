@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[cHtmlAttr]',
@@ -6,7 +6,7 @@ import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
 })
 export class HtmlAttributesDirective implements OnInit {
 
-  @Input() cHtmlAttr: {[key: string]: any };
+  @Input() cHtmlAttr?: { [key: string]: any };
 
   constructor(
     private renderer: Renderer2,
@@ -16,7 +16,7 @@ export class HtmlAttributesDirective implements OnInit {
   ngOnInit(): void {
     const attribs = this.cHtmlAttr;
     for (const attr in attribs) {
-      if (attr === 'style' && typeof(attribs[attr]) === 'object' ) {
+      if (attr === 'style' && typeof (attribs[attr]) === 'object') {
         this.setStyle(attribs[attr]);
       } else if (attr === 'class') {
         this.addClass(attribs[attr]);
@@ -26,23 +26,23 @@ export class HtmlAttributesDirective implements OnInit {
     }
   }
 
-  private setStyle(styles): void {
+  private setStyle(styles: any): void {
     // tslint:disable-next-line:forin
     for (const style in styles) {
-      this.renderer.setStyle(this.el.nativeElement, style, styles[style] );
+      this.renderer.setStyle(this.el.nativeElement, style, styles[style]);
     }
   }
 
-  private addClass(classes): void {
+  private addClass(classes: string | string[]): void {
     const classArray = (Array.isArray(classes) ? classes : classes.split(' '));
     classArray.filter((element) => element.length > 0).forEach(element => {
-      this.renderer.addClass(this.el.nativeElement, element );
+      this.renderer.addClass(this.el.nativeElement, element);
     });
   }
 
-  private setAttrib(key, value): void {
+  private setAttrib(key: string, value: string | null): void {
     value !== null ?
-      this.renderer.setAttribute(this.el.nativeElement, key, value ) :
+      this.renderer.setAttribute(this.el.nativeElement, key, value) :
       this.renderer.removeAttribute(this.el.nativeElement, key);
   }
 }

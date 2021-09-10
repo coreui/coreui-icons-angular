@@ -14,7 +14,6 @@ import { HtmlAttributesDirective } from '../shared/html-attr.directive';
   ],
   exports: [
     IconComponent,
-    HtmlAttributesDirective
   ],
 })
 export class IconModule {}

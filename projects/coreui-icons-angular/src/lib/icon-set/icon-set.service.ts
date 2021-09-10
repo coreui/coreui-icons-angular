@@ -9,19 +9,20 @@ export interface IIconSet {
 })
 export class IconSetService {
 
+  constructor() {}
+
   // tslint:disable-next-line:variable-name
   private _icons: IIconSet = {};
 
-  constructor() {}
-
-  set icons(iconSet) {
-    this._icons = iconSet;
-  }
   get icons(): IIconSet {
     return this._icons;
   }
 
-  public getIcon(name): string[] {
+  set icons(iconSet) {
+    this._icons = iconSet;
+  }
+
+  public getIcon(name: string): string[] {
     const icon = this.icons[name];
     if (!icon) {
       console.warn(`CoreUI WARN: Icon ${name} is not registered in IconService`);

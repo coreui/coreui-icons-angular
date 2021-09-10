@@ -9,9 +9,8 @@ describe('IconComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [ IconComponent, HtmlAttributesDirective ]
-    })
-    .compileComponents();
+      declarations: [IconComponent, HtmlAttributesDirective]
+    }).compileComponents();
   });
 
   beforeEach(() => {

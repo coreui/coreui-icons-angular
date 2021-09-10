@@ -1,6 +1,6 @@
-import { Component, HostBinding, Input } from '@angular/core';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {IconSetService} from '../icon-set/icon-set.service';
+import { Component, Input } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { IconSetService } from '../icon-set/icon-set.service';
 
 @Component({
   selector: 'c-icon',
@@ -9,35 +9,45 @@ import {IconSetService} from '../icon-set/icon-set.service';
 })
 export class IconComponent {
 
-  // tslint:disable-next-line:variable-name
-  private _name: string;
-  // tslint:disable-next-line:variable-name
-  private _viewBox: string;
+  @Input() attributes: any = { role: 'img' };
+  @Input() content?: string | string[];
+  @Input() size: 'custom' | 'custom-size' | 'sm' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl' | '' = '';
+  @Input() src?: string;
+  @Input() title?: string;
+  @Input() use = '';
+  @Input() customClasses: string | string[] | Set<string> | { [klass: string]: any } = '';
+  @Input() width?: string;
+  @Input() height?: string;
 
-  @Input() attributes: any = { role: 'img'};
+  constructor(
+    private sanitizer: DomSanitizer,
+    private iconSet: IconSetService
+  ) { }
+
+  // tslint:disable-next-line:variable-name
+  private _name!: string;
+
+  get name(): string {
+    const nameIsKebabCase = this._name?.includes('-');
+    return nameIsKebabCase ? this.toCamelCase(this._name) : this._name;
+  }
+
   @Input()
   set name(name: string) {
     this._name = name;
   }
-  get name(): string {
-    const nameIsKebabCase = this._name && this._name.includes('-');
-    return nameIsKebabCase ? this.toCamelCase(this._name) : this._name;
+
+  // tslint:disable-next-line:variable-name
+  private _viewBox!: string;
+
+  get viewBox(): string {
+    return this._viewBox || `0 0 ${this.scale}`;
   }
-  @Input() content?: string | string[];
-  @Input() size?: 'custom' | 'custom-size' | 'sm' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl' | '' = '';
-  @Input() src?: string;
-  @Input() title?: string;
-  @Input() use = '';
-  @Input() customClasses?: string|string[]|Set<string>|{[klass: string]: any};
+
   @Input()
   set viewBox(viewBox: string) {
     this._viewBox = viewBox;
   }
-  get viewBox(): string {
-    return this._viewBox || `0 0 ${ this.scale }`;
-  }
-  @Input() width?;
-  @Input() height?;
 
   get titleCode(): string {
     return this.title ? `<title>${this.title}</title>` : '';
@@ -55,6 +65,7 @@ export class IconComponent {
     );
     return undefined;
   }
+
   get iconCode(): SafeHtml {
     const code = Array.isArray(this.code) ? this.code[1] || this.code[0] : this.code;
     return this.sanitizer.bypassSecurityTrustHtml(this.titleCode + code);
@@ -68,6 +79,7 @@ export class IconComponent {
     const addCustom = !this.size && (this.width || this.height);
     return this.size === 'custom' || addCustom ? 'custom-size' : this.size;
   }
+
   get computedClasses(): any {
     const classes = {
       'c-icon': true,
@@ -76,13 +88,8 @@ export class IconComponent {
     return !!this.customClasses ? this.customClasses : classes;
   }
 
-  constructor(
-    private sanitizer: DomSanitizer,
-    private iconSet: IconSetService
-  ) { }
-
-  toCamelCase(str): any {
-    return str.replace(/([-_][a-z0-9])/ig, ($1) => {
+  toCamelCase(str: string): any {
+    return str.replace(/([-_][a-z0-9])/ig, ($1: string) => {
       return $1.toUpperCase().replace('-', '');
     });
   }

@@ -1,11 +1,11 @@
-import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {IconSetService} from './icon-set.service';
+import { IconSetService } from './icon-set.service';
 
 @NgModule({
   imports: [
-    CommonModule,
+    CommonModule
   ],
   providers: [
     IconSetService
@@ -23,7 +23,7 @@ export class IconSetModule {
     return {
       ngModule: IconSetModule,
       providers: [
-        {provide: IconSetService}
+        { provide: IconSetService }
       ]
     };
   }
