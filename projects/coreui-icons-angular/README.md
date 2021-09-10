@@ -1,12 +1,15 @@
 # CoreUI Icons Angular
 
+![angular](https://img.shields.io/badge/angular-^12.2.0-lightgrey.svg?style=flat-square&logo=angular)
+[![npm-coreui-angular-next][npm-coreui-icons-angular-next]][coreui-angular-icons-npm]  
+![angular](https://img.shields.io/badge/angular-^11.2.0-lightgrey.svg?style=flat-square&logo=angular)
 [![NPM](https://img.shields.io/npm/v/@coreui/icons-angular/latest?style=flat-square&color=brightgreen)][coreui-angular-icons-npm]
 [![Downloads](https://img.shields.io/npm/dm/@coreui/icons-angular.svg?style=flat-square)][coreui-angular-icons-npm]
 [![License](https://img.shields.io/npm/l/@coreui/angular?style=flat-square)][coreui]
-![angular](https://img.shields.io/badge/angular-^12.2.0-lightgrey.svg?style=flat-square&logo=angular)
 
 [coreui]: https://coreui.io/icons
 [coreui-angular-icons-npm]: https://www.npmjs.com/package/@coreui/icons-angular
+[npm-coreui-icons-angular-next]: https://img.shields.io/npm/v/@coreui/icons-angular/next.png?style=flat-square
 
 ## `c-icon` component
 
@@ -85,8 +88,8 @@ proprerty | type | default | description
 `customClasses` | string | undefined | Overwrites default `c-icon` component classes
 `viewBox` | string | undefined | SVG `viewbox`
 `attributes` | any | `{ role: 'img' }` |  Object with additional html attributes
-`width` | | undefined | SVG `width`
-`height` | | undefined | SVG `height`
+`width` | string | undefined | SVG `width`
+`height` | string | undefined | SVG `height`
 
 --- 
 
