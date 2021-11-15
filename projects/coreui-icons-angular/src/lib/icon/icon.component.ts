@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IconSetService } from '../icon-set/icon-set.service';
 
@@ -7,9 +7,9 @@ import { IconSetService } from '../icon-set/icon-set.service';
   templateUrl: './icon.component.svg',
   styleUrls: ['./icon.component.scss']
 })
-export class IconComponent {
+export class IconComponent implements AfterViewInit {
 
-  @Input() attributes: any = { role: 'img' };
+  @Input() attributes: any = {role: 'img'};
   @Input() content?: string | string[];
   @Input() size: 'custom' | 'custom-size' | 'sm' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl' | '' = '';
   @Input() src?: string;
@@ -19,34 +19,46 @@ export class IconComponent {
   @Input() width?: string;
   @Input() height?: string;
 
-  constructor(
-    private sanitizer: DomSanitizer,
-    private iconSet: IconSetService
-  ) { }
-
-  // tslint:disable-next-line:variable-name
-  private _name!: string;
-
-  get name(): string {
-    const nameIsKebabCase = this._name?.includes('-');
-    return nameIsKebabCase ? this.toCamelCase(this._name) : this._name;
-  }
-
   @Input()
   set name(name: string) {
-    this._name = name;
+    const nameIsKebabCase = name.includes('-');
+    this._name = nameIsKebabCase ? this.toCamelCase(name) : name;
   }
 
-  // tslint:disable-next-line:variable-name
-  private _viewBox!: string;
-
-  get viewBox(): string {
-    return this._viewBox || `0 0 ${this.scale}`;
+  get name(): string {
+    return this._name;
   }
+
+  private _name!: string;
 
   @Input()
   set viewBox(viewBox: string) {
     this._viewBox = viewBox;
+  }
+  get viewBox(): string {
+    return this._viewBox ?? `0 0 ${this.scale}`;
+  }
+  private _viewBox!: string;
+
+  @ViewChild('svgElement', {read: ElementRef}) svgElementRef!: ElementRef;
+
+  constructor(
+    private renderer: Renderer2,
+    private elementRef: ElementRef,
+    private sanitizer: DomSanitizer,
+    private iconSet: IconSetService
+  ) {
+    this.renderer.setStyle(this.elementRef.nativeElement, 'display', 'none');
+  }
+
+  ngAfterViewInit(): void {
+    this.elementRef.nativeElement.classList.forEach((item: string) => {
+      this.renderer.addClass(this.svgElementRef.nativeElement, item);
+    });
+    const parentElement = this.renderer.parentNode(this.elementRef.nativeElement);
+    const svgElement = this.svgElementRef.nativeElement;
+    this.renderer.insertBefore(parentElement, svgElement, this.elementRef.nativeElement);
+    this.renderer.removeChild(parentElement, this.elementRef.nativeElement);
   }
 
   get titleCode(): string {

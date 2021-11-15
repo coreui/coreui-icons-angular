@@ -47,7 +47,7 @@ describe('HtmlAttributesDirective', () => {
 
   it('should render an id attr', () => {
     fixture.detectChanges();
-    console.log(inputEl.nativeElement.attributes);
+    // console.log(inputEl.nativeElement.attributes);
     expect(inputEl.nativeElement.getAttribute('id')).toBe('id-1');
   });
 });
