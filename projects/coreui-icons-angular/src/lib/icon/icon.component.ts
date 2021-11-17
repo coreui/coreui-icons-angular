@@ -1,34 +1,31 @@
 import { AfterViewInit, Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IconSetService } from '../icon-set/icon-set.service';
+import { IconSize, IIcon } from './icon.interface';
 
 @Component({
   selector: 'c-icon',
   templateUrl: './icon.component.svg',
   styleUrls: ['./icon.component.scss']
 })
-export class IconComponent implements AfterViewInit {
+export class IconComponent implements IIcon, AfterViewInit {
 
   @Input() attributes: any = {role: 'img'};
-  @Input() content?: string | string[];
-  @Input() size: 'custom' | 'custom-size' | 'sm' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl' | '' = '';
-  @Input() src?: string;
+  @Input() content?: string | string[] | any[];
+  @Input() size: IconSize = '';
   @Input() title?: string;
   @Input() use = '';
-  @Input() customClasses: string | string[] | Set<string> | { [klass: string]: any } = '';
+  @Input() customClasses?: string | string[] | Set<string> | { [klass: string]: any } = '';
   @Input() width?: string;
   @Input() height?: string;
 
   @Input()
   set name(name: string) {
-    const nameIsKebabCase = name.includes('-');
-    this._name = nameIsKebabCase ? this.toCamelCase(name) : name;
+    this._name = name.includes('-') ? this.toCamelCase(name) : name;
   }
-
   get name(): string {
     return this._name;
   }
-
   private _name!: string;
 
   @Input()
@@ -36,11 +33,18 @@ export class IconComponent implements AfterViewInit {
     this._viewBox = viewBox;
   }
   get viewBox(): string {
-    return this._viewBox ?? `0 0 ${this.scale}`;
+    return this._viewBox ?? this.scale;
   }
   private _viewBox!: string;
 
   @ViewChild('svgElement', {read: ElementRef}) svgElementRef!: ElementRef;
+
+  get innerHtml(): SafeHtml {
+    const code = Array.isArray(this.code) ? this.code[1] || this.code[0] : this.code ?? '';
+    // todo proper sanitize
+    // const sanitized = this.sanitizer.sanitize(SecurityContext.HTML, code);
+    return this.sanitizer.bypassSecurityTrustHtml((this.titleCode + code) ?? '');
+  }
 
   constructor(
     private renderer: Renderer2,
@@ -65,12 +69,14 @@ export class IconComponent implements AfterViewInit {
     return this.title ? `<title>${this.title}</title>` : '';
   }
 
-  get code(): string[] | undefined | string {
+  get code(): string | string[] | undefined {
     if (this.content) {
       return this.content;
-    } else if (this.iconSet) {
+    }
+    if (this.iconSet && this.name) {
       return this.iconSet.getIcon(this.name);
     }
+    if (this.name && !this.iconSet?.icons[this.name])
     console.warn(`c-icon component: icon name '${this.name}' does not exist for IconSet service. ` +
       `To use icon by 'name' prop you need to add it to IconSet service. \n`,
       this.name
@@ -78,16 +84,11 @@ export class IconComponent implements AfterViewInit {
     return undefined;
   }
 
-  get iconCode(): SafeHtml {
-    const code = Array.isArray(this.code) ? this.code[1] || this.code[0] : this.code;
-    return this.sanitizer.bypassSecurityTrustHtml(this.titleCode + code);
-  }
-
   get scale(): string {
-    return Array.isArray(this.code) && this.code.length > 1 ? this.code[0] : '64 64';
+    return Array.isArray(this.code) && this.code.length > 1 ? `0 0 ${this.code[0]}` : '0 0 64 64';
   }
 
-  get computedSize(): 'custom-size' | 'sm' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl' | '' {
+  get computedSize(): Exclude<IconSize, 'custom'> | undefined {
     const addCustom = !this.size && (this.width || this.height);
     return this.size === 'custom' || addCustom ? 'custom-size' : this.size;
   }

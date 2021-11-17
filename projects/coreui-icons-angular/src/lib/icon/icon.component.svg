@@ -1,21 +1,13 @@
-<img *ngIf="src"
-     [cHtmlAttr]="attributes"
-     [attr.alt]="title"
-     [ngClass]="customClasses"
-     [src]="src"
-/>
-
-<svg *ngIf="(!src) && (!use) && (!!code)"
+<svg *ngIf="(!use) && (!!code)"
      xmlns="http://www.w3.org/2000/svg"
      [attr.width]="width"
      [attr.height]="height || width"
      [attr.viewBox]="viewBox"
-     [innerHtml]="iconCode"
+     [innerHtml]="innerHtml"
      [ngClass]="computedClasses"
      [cHtmlAttr]="attributes"
      role="img"
      pointer-events="none"
-     focusable="false"
      #svgElement
 >
 </svg>
@@ -28,7 +20,6 @@
      [cHtmlAttr]="attributes"
      role="img"
      pointer-events="none"
-     focusable="false"
 >
   <use [attr.href]="use"></use>
 </svg>
