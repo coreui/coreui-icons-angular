@@ -11,21 +11,20 @@
 [coreui-angular-icons-npm]: https://www.npmjs.com/package/@coreui/icons-angular
 [npm-coreui-icons-angular-next]: https://img.shields.io/npm/v/@coreui/icons-angular/next.png?style=flat-square
 
-## `c-icon` component
+## `cIcon` directive
 
-Angular component for [CoreUI Icons SVG set](https://coreui.io/icons/).
+Angular directive for [CoreUI Icons SVG set](https://coreui.io/icons/).
 
 ### Features
 
-- Loads icons in three ways:
-  - stored globally in Angular service,
-  - directly passed SVG tag content,
-  - source link to SVG file
-- Reduces icons bundle size when imported as single icons,
-- Full functionality of `<svg>` html tag,
+- Load icons:
+  - stored in Angular root service,
+  - directly passed SVG  content,
+- Reduce icons bundle size when imported as single icons,
+- Full functionality of `<svg>` tag,
 - Clean API
 
-For component description visit [CIcon component documentation](https://icons.coreui.io/docs/using-coreui-icons-with/angular/)
+For directive description visit [https://coreui.io/angular/docs/4.0/](https://coreui.io/angular/docs/4.0/)
 
 ### Installation
 
@@ -39,12 +38,11 @@ npm install @coreui/icons-angular
 ```ts
 // app NgModule
 
-import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
+import { IconModule, IconSetService } from '@coreui/icons-angular';
 
 @NgModule({
   imports: [
     IconModule,
-    IconSetModule.forRoot(),
 ...
   providers: [IconSetService],
 ...
@@ -54,11 +52,9 @@ import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular
 // app component
 
 import { cilEnvelopeOpen, flagSet } from '@coreui/icons';
-import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
+import { IconSetService } from '@coreui/icons-angular';
 
 @Component({
-  ...
-  providers: [IconSetService],
   ...
 })
 export class AppComponent implements OnInit {
@@ -70,29 +66,41 @@ export class AppComponent implements OnInit {
 ```
 
 ```jsx
-<c-icon name="cil-envelope-open" size="lg"></c-icon>
-<c-icon name="cifAu"></c-icon>
+<svg cIcon name="cil-envelope-open" size="lg"></svg>
+<svg cIcon name="cifAu"></svg>
 ```
 
 ### API
-> Use one of `name`, `src` or `content` prop as it defines the way of icon import
+
+#### Icon _directive_
+> Use one of `name` or `content` prop as it defines the way of icon import
+
+##### Inputs
 
 proprerty | type | default | description  
 ---|---|---|---
 `name` | string | undefined | name of SVG icon stored in IconSetService
 `content` | string, string[] | undefined | SVG content 
-`src` | string | undefined | Link to the icon. If defined, component will be rendered as `<img>` tag |
-`size` | `custom`, `custom-size`, `sm`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, `6xl`, `7xl`, `8xl`, `9xl` |  '' | Size of icon
+`size` | `custom`, `custom-size`, `sm`, `lg`, `xl`, `xxl`, `3xl`, `4xl`, `5xl`, `6xl`, `7xl`, `8xl`, `9xl` | '' | Size of icon
 `title` | string | undefined |
-`use` | string | undefined | SVG `<use>` 
 `customClasses` | string | undefined | Overwrites default `.icon` classes
 `viewBox` | string | undefined | SVG `viewbox`
-`attributes` | any | `{ role: 'img' }` |  Object with additional html attributes
 `width` | string | undefined | SVG `width`
 `height` | string | undefined | SVG `height`
 
 --- 
 
+#### IconSet _service_
+
+##### Props
+
+| proprerty | type | default | description|
+| --- | --- | --- | --- |
+| `getIcon()` | `(string): any[] ` | | returns an icon |
+| `icons` | `IIconSet` | undefined | IconSet object |
+| `iconNames` | `[key: string]: string` | _undefined_ | returns icon name from key |
+
+---
 ### License
 
 CoreUI Icons Free are free, open source, and GPL friendly. You can use it for
