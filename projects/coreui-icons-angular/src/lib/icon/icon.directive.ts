@@ -19,7 +19,7 @@ export class IconDirective implements IIcon {
 
   @Input()
   set name(name: string) {
-    this._name = name.includes('-') ? this.toCamelCase(name) : name;
+    this._name = name?.includes('-') ? this.toCamelCase(name) : name;
   }
   get name(): string {
     return this._name;
@@ -41,6 +41,9 @@ export class IconDirective implements IIcon {
 
   @HostBinding('attr.pointer-events')
   @Input('pointer-events') pointerEvents = 'none';
+
+  @HostBinding('attr.role')
+  @Input() role = 'img';
 
   @HostBinding('class')
   get hostClasses() {

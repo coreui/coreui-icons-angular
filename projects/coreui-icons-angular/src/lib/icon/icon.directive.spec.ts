@@ -49,7 +49,6 @@ describe('IconDirective', () => {
     expect(directive).toBeTruthy();
   });
   it('icon classes should be applied', () => {
-    console.log(svgEl.nativeElement);
     expect(svgEl.nativeElement).toBeTruthy();
     expect(svgEl.nativeElement).toHaveClass('icon');
     expect(svgEl.nativeElement).toHaveClass('icon-lg');
