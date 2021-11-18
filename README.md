@@ -38,12 +38,11 @@ npm install @coreui/icons-angular
 ```ts
 // app NgModule
 
-import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
+import { IconModule, IconSetService } from '@coreui/icons-angular';
 
 @NgModule({
   imports: [
     IconModule,
-    IconSetModule.forRoot(),
 ...
   providers: [IconSetService],
 ...
@@ -53,11 +52,9 @@ import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular
 // app component
 
 import { cilEnvelopeOpen, flagSet } from '@coreui/icons';
-import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
+import { IconSetService } from '@coreui/icons-angular';
 
 @Component({
-  ...
-  providers: [IconSetService],
   ...
 })
 export class AppComponent implements OnInit {
@@ -74,6 +71,8 @@ export class AppComponent implements OnInit {
 ```
 
 ### API
+
+#### Icon _directive_
 > Use one of `name` or `content` prop as it defines the way of icon import
 
 ##### Inputs
@@ -91,6 +90,17 @@ proprerty | type | default | description
 
 --- 
 
+#### IconSet _service_
+
+##### Props
+
+| proprerty | type | default | description|
+| --- | --- | --- | --- |
+| `getIcon()` | `(string): any[] ` | | returns an icon |
+| `icons` | `IIconSet` | undefined | IconSet object |
+| `iconNames` | `[key: string]: string` | _undefined_ | returns icon name from key |
+
+---
 ### License
 
 CoreUI Icons Free are free, open source, and GPL friendly. You can use it for
