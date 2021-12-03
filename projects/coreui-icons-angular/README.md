@@ -1,11 +1,38 @@
+<p align="center">
+  <a href="https://coreui.io/">
+    <img
+      src="https://coreui.io/images/brand/coreui-signet.svg"
+      alt="CoreUI logo"
+      width="200"
+    />
+  </a>
+</p>
+
+<h3 align="center">CoreUI Icons for Angular</h3>
+
+<p align="center">
+  <br>
+  <a href="https://coreui.io/angular/docs/4.0/icons"><strong>Explore CoreUI for Angular docs »</strong></a>
+  <br>
+  <br>
+  <a href="https://icons.coreui.io/"><strong>CoreUI Icons »</strong></a>
+  <br>
+  <br>
+  <a href="https://github.com/coreui/coreui-icons-angular/issues/new?template=bug_report.md">Report a bug</a>
+  ·
+  <a href="https://github.com/coreui/coreui-icons-angular/issues/new?template=feature_request.md">Request a feature</a>
+  ·
+  <a href="https://blog.coreui.io/">Blog</a>
+</p>
+
 # CoreUI Icons Angular
 
-![angular](https://img.shields.io/badge/angular-^12.2.0-lightgrey.svg?style=flat-square&logo=angular)
+![angular](https://img.shields.io/badge/angular-^13.0.0-lightgrey.svg?style=flat-square&logo=angular)
 [![npm-coreui-angular-next][npm-coreui-icons-angular-next]][coreui-angular-icons-npm]  
 ![angular](https://img.shields.io/badge/angular-^11.2.0-lightgrey.svg?style=flat-square&logo=angular)
-[![NPM](https://img.shields.io/npm/v/@coreui/icons-angular/latest?style=flat-square&color=brightgreen)][coreui-angular-icons-npm]
+[![NPM](https://img.shields.io/npm/v/@coreui/icons-angular/latest?style=flat-square&color=brightgreen)][coreui-angular-icons-npm]  
 [![Downloads](https://img.shields.io/npm/dm/@coreui/icons-angular.svg?style=flat-square)][coreui-angular-icons-npm]
-[![License](https://img.shields.io/npm/l/@coreui/angular?style=flat-square)][coreui]
+[![License](https://img.shields.io/npm/l/@coreui/angular?style=flat-square)][coreui]  
 
 [coreui]: https://coreui.io/icons
 [coreui-angular-icons-npm]: https://www.npmjs.com/package/@coreui/icons-angular

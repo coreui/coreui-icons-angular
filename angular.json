@@ -7,7 +7,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "@coreui/icons-angular": {
+    "coreui-icons-angular": {
       "projectType": "library",
       "schematics": {
         "@schematics/angular:component": {
@@ -53,5 +53,5 @@
       }
     }
   },
-  "defaultProject": "@coreui/icons-angular"
+  "defaultProject": "coreui-icons-angular"
 }
