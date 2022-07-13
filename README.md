@@ -1,3 +1,9 @@
+>
+> **Code moved to:**  
+> [`https://github.com/coreui/coreui-angular/tree/main/projects/coreui-icons-angular`](https://github.com/coreui/coreui-angular/tree/main/projects/coreui-icons-angular)
+
+<hr>
+
 <p align="center">
   <a href="https://coreui.io/">
     <img
